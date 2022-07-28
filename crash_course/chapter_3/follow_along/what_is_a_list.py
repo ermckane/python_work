@@ -59,5 +59,9 @@ print(fantasies[-1].title())
 '''
 Using Individual Values from a List
 
-
+You can use individual values from a list just as you would any other 
+variable. For example, you can use f-strings to create a message based 
+on a value from a list.
 '''
+message = f"The fantasy planet I would most like to visit is {fantasies[-1].title()}."
+print(message)
