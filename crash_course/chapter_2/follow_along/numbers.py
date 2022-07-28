@@ -7,6 +7,9 @@ integers in Python.
 
 print(2*3)
 print(3/2)
+print(2+3)
+print(3-2)
+print((2+3)*3)
 
 #Python uses two multiplication symbols to represent exponents:
 
@@ -15,6 +18,8 @@ print(10**6)
 #FLOATS
 
 '''
+Float
+
 Python calls any number with a decimal point a float. This
 term is used in most programming languages, and it
 refers to the fact that a decimal point can appear at any
