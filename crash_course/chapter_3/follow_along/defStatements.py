@@ -1,6 +1,17 @@
 import random
 
-print('Please enter a number 1 - 9.')
+while True:
+    userInput = input()
+    
+    if len(userInput) > 1:
+        continue
+    print('Passed phase 1')
+    if userInput.isalpha() is True:
+        continue
+    if int(userInput) in range (1,9):
+        print('Passed phase 2')
+        break
+    break
 
 def getAnswer(answerValue):
     if answerValue == 1:
@@ -21,5 +32,6 @@ def getAnswer(answerValue):
         return 'Outlook not so good'
     elif answerValue ==9:
         return 'Very doubtful'
-    
-print(getAnswer(random.randint(1,9)))
+   
+
+print(getAnswer(int(userInput)))
