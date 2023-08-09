@@ -1,11 +1,13 @@
 import random
+numberOfExperiments = 10000
+numberOfFlips = 100
 numberOfStreaks = 0
 
 
-for experiments in range(10000):
+for experiments in range(numberOfExperiments):
     # Code that creates a list of 100 'heads' or 'tails' values.
     flipList = []
-    for x in range(100):
+    for x in range(numberOfFlips):
         flip = random.randint(0, 1)
         if flip == 0:
             flipList.append('H')
@@ -23,7 +25,5 @@ for experiments in range(10000):
         if streak == 6:
             numberOfStreaks += 1   
             streak = 0  
-
-print(numberOfStreaks)
 
 print('Chance of streak: %s%%' % (numberOfStreaks / 100))
