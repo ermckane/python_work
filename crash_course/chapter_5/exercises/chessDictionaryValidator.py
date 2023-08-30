@@ -10,23 +10,13 @@ white or black, followed by 'pawn', 'knight', 'bishop', 'rook', 'queen', or
 'king'. This function should detect when a bug has resulted in an improper
 chess board."""
 
-xValue = 1
-chessBoard = {}
-yValues = ['a','b','c','d','e','f','g','h']
-
-#Create chess board                                                                                                                                    
-for x in range(8):
-    yValue = 0
-    for y in range(8):
-        chessBoard.setdefault(str(xValue) + yValues[yValue], '')
-        yValue += 1
-    xValue += 1
+import random
 
 #Giving each side their pieces
 pieceValue = 0
-pieces = ('pawn', 'pawn', 'pawn', 'pawn', 'pawn', 'pawn'
-          , 'pawn', 'pawn', 'rook', 'rook', 'knight', 'knight'
-          , 'bishop', 'bishop', 'king', 'queen')
+pieces = ('rook', 'knight', 'bishop', 'king', 'queen'
+          , 'bishop', 'rook', 'knight', 'pawn', 'pawn', 
+          'pawn', 'pawn', 'pawn', 'pawn', 'pawn', 'pawn', )
 whitePieces = []
 blackPieces = []
 
@@ -35,8 +25,30 @@ for x in pieces:
     blackPieces.append('b' + pieces[pieceValue])
     pieceValue += 1
 
+#Check to make sure previous code worked
 print(whitePieces)
 print(blackPieces)
+
+#Create chess board   
+xValue = 1
+chessBoard = {}
+yValues = ['a','b','c','d','e','f','g','h']
+                                                                                                                                 
+for x in range(8):
+    yValue = 0
+    for y in range(8):
+        if xValue <= 2:
+            chessBoard.setdefault(str(xValue) + yValues[yValue], whitePieces.pop(0))
+        elif xValue >= 7:
+            chessBoard.setdefault(str(xValue) + yValues[yValue], blackPieces.pop(len(blackPieces) -1))
+        else:
+            chessBoard.setdefault(str(xValue) + yValues[yValue], '')
+        yValue += 1
+    xValue += 1
+
+print(chessBoard)
+
+#Populating chess board with pieces
 
 
 
