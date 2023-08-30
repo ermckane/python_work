@@ -11,23 +11,38 @@ white or black, followed by 'pawn', 'knight', 'bishop', 'rook', 'queen', or
 chess board."""
 
 xValue = 1
-yValue = 0
 chessBoard = {}
 yValues = ['a','b','c','d','e','f','g','h']
 
 #Create chess board                                                                                                                                    
 for x in range(8):
+    yValue = 0
     for y in range(8):
         chessBoard.setdefault(str(xValue) + yValues[yValue], '')
         yValue += 1
-    yValue = 0
     xValue += 1
 
-def isValidChessBoard():
+#Giving each side their pieces
+pieceValue = 0
+pieces = ('pawn', 'pawn', 'pawn', 'pawn', 'pawn', 'pawn'
+          , 'pawn', 'pawn', 'rook', 'rook', 'knight', 'knight'
+          , 'bishop', 'bishop', 'king', 'queen')
+whitePieces = []
+blackPieces = []
 
-print(chessBoard)    
+for x in pieces:
+    whitePieces.append('w' + pieces[pieceValue])
+    blackPieces.append('b' + pieces[pieceValue])
+    pieceValue += 1
+
+print(whitePieces)
+print(blackPieces)
+
+
+
+
+#def isValidChessBoard():
+
+  
            
 
-
-
-#def isValidChessBoard(valid):
