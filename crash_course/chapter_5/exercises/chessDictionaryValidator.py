@@ -10,4 +10,24 @@ white or black, followed by 'pawn', 'knight', 'bishop', 'rook', 'queen', or
 'king'. This function should detect when a bug has resulted in an improper
 chess board."""
 
-def isValidChessBoard(valid):
+xValue = 1
+yValue = 0
+chessBoard = {}
+yValues = ['a','b','c','d','e','f','g','h']
+
+#Create chess board                                                                                                                                    
+for x in range(8):
+    for y in range(8):
+        chessBoard.setdefault(str(xValue) + yValues[yValue], '')
+        yValue += 1
+    yValue = 0
+    xValue += 1
+
+def isValidChessBoard():
+
+print(chessBoard)    
+           
+
+
+
+#def isValidChessBoard(valid):
