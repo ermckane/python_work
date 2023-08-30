@@ -10,8 +10,6 @@ white or black, followed by 'pawn', 'knight', 'bishop', 'rook', 'queen', or
 'king'. This function should detect when a bug has resulted in an improper
 chess board."""
 
-import random
-
 #Giving each side their pieces
 pieceValue = 0
 pieces = ('rook', 'knight', 'bishop', 'king', 'queen'
@@ -29,11 +27,11 @@ for x in pieces:
 print(whitePieces)
 print(blackPieces)
 
-#Create chess board   
+#Create chess board and populating board
 xValue = 1
 chessBoard = {}
 yValues = ['a','b','c','d','e','f','g','h']
-                                                                                                                                 
+                                                                                                                                
 for x in range(8):
     yValue = 0
     for y in range(8):
@@ -48,12 +46,7 @@ for x in range(8):
 
 print(chessBoard)
 
-#Populating chess board with pieces
-
-
-
-
-#def isValidChessBoard():
+def isValidChessBoard(valid):
 
   
            
