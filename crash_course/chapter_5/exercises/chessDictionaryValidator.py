@@ -24,8 +24,8 @@ for x in pieces:
     pieceValue += 1
 
 #Check to make sure previous code worked
-print(whitePieces)
-print(blackPieces)
+#print(whitePieces)
+#print(blackPieces)
 
 #Create chess board and populating board
 xValue = 1
@@ -44,9 +44,26 @@ for x in range(8):
         yValue += 1
     xValue += 1
 
-print(chessBoard)
+#print(chessBoard)
 
-def isValidChessBoard(valid):
+def isValidChessBoard(valid_board):
+
+    #Check for black king and white king
+    if "bking" in valid_board.values() or "wking" in valid_board.values():
+        return "There is a white king and black king"
+    else:
+        return "Either a white king or black king is missing."
+    
+    #Check if values are valid
+    for x in valid_board.values():
+        if (x[:0] == 'w' or x[:0] == 'y') and x[1:] in pieces:
+            return "All pieces are valid"
+        else:
+            return "Not all pieces are valid."
+
+print(isValidChessBoard(chessBoard))
+
+    
 
   
            
