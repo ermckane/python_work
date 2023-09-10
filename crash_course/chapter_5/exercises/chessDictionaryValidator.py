@@ -10,7 +10,7 @@ white or black, followed by 'pawn', 'knight', 'bishop', 'rook', 'queen', or
 'king'. This function should detect when a bug has resulted in an improper
 chess board."""
 
-#Giving each side their pieces
+# Giving each side their pieces
 pieceValue = 0
 pieces = ('rook', 'knight', 'bishop', 'king', 'queen'
           , 'bishop', 'rook', 'knight', 'pawn', 'pawn', 
@@ -23,14 +23,15 @@ for x in pieces:
     blackPieces.append('b' + pieces[pieceValue])
     pieceValue += 1
 
-#Check to make sure previous code worked
-#print(whitePieces)
-#print(blackPieces)
+# Check to make sure previous code worked
+# print(whitePieces)
+# print(blackPieces)
 
-#Create chess board and populating board
+# Create chess board and populating board
 xValue = 1
 chessBoard = {}
 yValues = ['a','b','c','d','e','f','g','h']
+invalidPieces = []
                                                                                                                                 
 for x in range(8):
     yValue = 0
@@ -48,18 +49,44 @@ for x in range(8):
 
 def isValidChessBoard(valid_board):
 
-    #Check for black king and white king
-    if "bking" in valid_board.values() or "wking" in valid_board.values():
-        return "There is a white king and black king"
+    pieceCheckCount = 0
+    errorList = []
+    validCount = 0
+
+    # Check that each side only has 16 pieces.
+
+    if len(whitePieces) == 16 and len(blackPieces) == 16:
+        validCount += 1
     else:
-        return "Either a white king or black king is missing."
-    
-    #Check if values are valid
+        errorList.append('One side has more pieces then the other.')
+
+    # Check if each piece is valid
+       
     for x in valid_board.values():
-        if (x[:0] == 'w' or x[:0] == 'y') and x[1:] in pieces:
-            return "All pieces are valid"
+        if x == '' or ((x[0] == 'w' or x[0] == 'b') and x[1:] in pieces):
+            pieceCheckCount += 1
         else:
-            return "Not all pieces are valid."
+            invalidPieces.append(x)
+
+    # Confirms every piece on board is valid
+    
+    if pieceCheckCount == len(valid_board):
+        validCount += 1   
+    else:
+        print(invalidPieces)
+        errorList.append('There are invalid pieces.')
+              
+    # Check for black king and white king
+    if "bking" in valid_board.values() or "wking" in valid_board.values():
+        validCount += 1
+    else:
+        errorList.append('There is a missing bking or wking.')
+
+    # Check that position keys are valid.
+
+    for x in valid_board.keys():
+        
+    
 
 print(isValidChessBoard(chessBoard))
 
