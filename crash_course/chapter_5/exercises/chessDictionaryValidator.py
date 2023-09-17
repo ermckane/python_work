@@ -32,14 +32,18 @@ xValue = 1
 chessBoard = {}
 yValues = ['a','b','c','d','e','f','g','h']
 invalidPieces = []
+wList = 0
+bList = 15
                                                                                                                                 
 for x in range(8):
     yValue = 0
     for y in range(8):
         if xValue <= 2:
-            chessBoard.setdefault(str(xValue) + yValues[yValue], whitePieces.pop(0))
+            chessBoard.setdefault(str(xValue) + yValues[yValue], whitePieces[wList])
+            wList +=1
         elif xValue >= 7:
-            chessBoard.setdefault(str(xValue) + yValues[yValue], blackPieces.pop(len(blackPieces) -1))
+            chessBoard.setdefault(str(xValue) + yValues[yValue], blackPieces[bList])
+            wList -= 1
         else:
             chessBoard.setdefault(str(xValue) + yValues[yValue], '')
         yValue += 1
@@ -49,7 +53,7 @@ for x in range(8):
 
 def isValidChessBoard(valid_board):
 
-    pieceCheckCount = 0
+    checkCount = 0
     errorList = []
     validCount = 0
 
@@ -58,19 +62,19 @@ def isValidChessBoard(valid_board):
     if len(whitePieces) == 16 and len(blackPieces) == 16:
         validCount += 1
     else:
-        errorList.append('One side has more pieces then the other.')
+        errorList.append('At least one side does not have 16 pieces.')
 
     # Check if each piece is valid
        
     for x in valid_board.values():
         if x == '' or ((x[0] == 'w' or x[0] == 'b') and x[1:] in pieces):
-            pieceCheckCount += 1
+            checkCount += 1
         else:
             invalidPieces.append(x)
 
     # Confirms every piece on board is valid
     
-    if pieceCheckCount == len(valid_board):
+    if checkCount == len(valid_board):
         validCount += 1   
     else:
         print(invalidPieces)
@@ -84,10 +88,25 @@ def isValidChessBoard(valid_board):
 
     # Check that position keys are valid.
 
+    checkCount = 0
+
     for x in valid_board.keys():
         
-    
+        if (int(x[0]) >= 1 and int(x[0]) <= 8) and x[1:] in yValues:
+            checkCount += 1
+        else:
+            errorList.append('There is an invalid board value.')
+        
+        if checkCount == 64:
+            validCount +=1
+        else:
+            continue
 
+    if validCount == 4:
+        return 'Chessboard is valid. Congratulations!'
+    else:
+        return errorList
+    
 print(isValidChessBoard(chessBoard))
 
     
